@@ -1,6 +1,6 @@
 # Lab-Assignment-5-SOLID-Principles
 
-### Improve the following codes to implement SOLID principles in OOP.
+### Improve the following code to implement SOLID principles in OOP.
 
 ```java
 public interface Order {
@@ -24,13 +24,13 @@ public class OrderAction implements Order {
 
   @Override
   public void placeOrder(String customerName, String address) {
-    // Simulate placing order in a system
+    // Simulate placing an order in a system
     System.out.println("Order placed for " + customerName + " at " + address);
   }
 
   @Override
   public void generateInvoice(String fileName) {
-    // Simulate generating invoice file
+    // Simulate generating an invoice file
     System.out.println("Invoice generated: " + fileName);
   }
 
@@ -56,3 +56,4 @@ public class OrderTest {
 ```
 
 ### UML Class Diagram:
+![UML Class Diagram](https://github.com/user-attachments/assets/c9871ddd-6cf3-49dc-8595-c0447d63d2cf)
