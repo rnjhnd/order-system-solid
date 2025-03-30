@@ -36,7 +36,7 @@ public class OrderAction implements Order {
 
   @Override
   public void sendEmailNotification(String email) {
-    // Simulate sending email notification
+    // Simulate sending an email notification
     System.out.println("Email notification sent to: " + email);
   }
 }
