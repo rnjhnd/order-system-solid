@@ -1,4 +1,4 @@
-# Lab-Assignment-5-SOLID-Principles
+# SOLID Principles
 
 ### Improve the following code to implement SOLID principles in OOP.
 
