@@ -1,8 +1,8 @@
-## SOLID-Based Order Processing System
+# SOLID-Based Order Processing System
 
 A Java refactoring that demonstrates SOLID principles by decoupling order processing, invoice generation, and notifications into cohesive components coordinated by an orchestration layer.
 
-### 📋 Table of Contents
+## 📋 Table of Contents
 
 - [Overview](#overview)
 - [Architecture](#architecture)
@@ -16,19 +16,19 @@ A Java refactoring that demonstrates SOLID principles by decoupling order proces
 - [Contributing](#contributing)
 - [License](#license)
 
-### 🎯 Overview
+## 🎯 Overview
 
 This project implements an order processing flow that adheres to SOLID principles. Responsibilities are split across small interfaces and classes so that behavior can be extended without modifying existing code.
 
-#### Key Benefits
+### Key Benefits
 - **Decoupled components**: Orchestration depends on interfaces, not concrete classes
 - **Clear responsibilities**: Each class has a single reason to change
 - **Extensible architecture**: Add new invoice/notifier/order implementations safely
 - **Testability**: Swap in fakes/mocks via interfaces
 
-### 🏗️ Architecture
+## 🏗️ Architecture
 
-#### Core Interfaces and Classes
+### Core Interfaces and Classes
 - **`Order`**: Contract for order operations (`calculateTotal`, `placeOrder`)
 - **`OrderProcessor`**: Concrete implementation of `Order`
 - **`InvoiceGenerator`**: Contract for invoice generation
@@ -37,28 +37,28 @@ This project implements an order processing flow that adheres to SOLID principle
 - **`EmailService`**: Concrete email notifier
 - **`OrderManager`**: Orchestrates the flow by depending on the interfaces above
 
-#### Design Principles
+### Design Principles
 - **Loose Coupling** through constructor injection and interfaces
 - **Single Responsibility** per class
 - **Open/Closed** for adding new behaviors without modifying existing code
 
-### ✨ Features
+## ✨ Features
 
-#### Order Processing
+### Order Processing
 - Calculate totals based on price and quantity
 - Place orders for a given customer and address
 
-#### Invoice Generation
+### Invoice Generation
 - Generate invoice artifacts (e.g., file names) via `InvoiceGenerator`
 
-#### Notifications
+### Notifications
 - Send email notifications via `EmailNotifier`
 
-#### System Flexibility
+### System Flexibility
 - Swap implementations without changing orchestration
 - Add new notifier or invoice strategies seamlessly
 
-### 📁 Project Structure
+## 📁 Project Structure
 
 ```
 order-system-solid/
@@ -73,12 +73,12 @@ order-system-solid/
   README.md                # Project documentation
 ```
 
-### 🚀 Installation & Usage
+## 🚀 Installation & Usage
 
-#### Prerequisites
+### Prerequisites
 - Java 11 or higher
 
-#### Running the Application
+### Running the Application
 1. Compile all classes from the project root
    ```bash
    javac *.java
@@ -88,7 +88,7 @@ order-system-solid/
    java OrderTest
    ```
 
-#### Expected Output
+### Expected Output
 ```
 Order total: $20.0
 Order placed for: John Doe at 123 Main St
@@ -96,9 +96,9 @@ Invoice generated: order_123.pdf
 Email notification sent to: johndoe@example.com
 ```
 
-### 💻 Code Examples
+## 💻 Code Examples
 
-#### Orchestrating the Flow
+### Orchestrating the Flow
 ```java
 Order order = new OrderProcessor();
 InvoiceGenerator invoiceGenerator = new InvoiceService();
@@ -108,7 +108,7 @@ OrderManager orderManager = new OrderManager(order, invoiceGenerator, emailNotif
 orderManager.processOrder(10.0, 2, "John Doe", "123 Main St", "order_123.pdf", "johndoe@example.com");
 ```
 
-#### Swapping Implementations (Open/Closed + DIP)
+### Swapping Implementations (Open/Closed + DIP)
 ```java
 class SmsNotifier implements EmailNotifier {
   @Override
@@ -121,7 +121,7 @@ EmailNotifier notifier = new SmsNotifier();
 OrderManager manager = new OrderManager(new OrderProcessor(), new InvoiceService(), notifier);
 ```
 
-#### Adding a New Invoice Strategy
+### Adding a New Invoice Strategy
 ```java
 class HtmlInvoiceService implements InvoiceGenerator {
     @Override
@@ -134,14 +134,14 @@ InvoiceGenerator generator = new HtmlInvoiceService();
 OrderManager manager = new OrderManager(new OrderProcessor(), generator, new EmailService());
 ```
 
-### 🎨 Design Principles Used
+## 🎨 Design Principles Used
 - **Single Responsibility Principle (SRP)**: Each class focuses on one responsibility
 - **Open/Closed Principle (OCP)**: Extend via new implementations without modifying existing classes
 - **Liskov Substitution Principle (LSP)**: Any `Order`/`InvoiceGenerator`/`EmailNotifier` implementation can be used interchangeably
 - **Interface Segregation Principle (ISP)**: Focused interfaces (`Order`, `InvoiceGenerator`, `EmailNotifier`) avoid fat interfaces
 - **Dependency Inversion Principle (DIP)**: `OrderManager` depends on abstractions and receives them via constructor injection
 
-### 📊 UML Class Diagram
+## 📊 UML Class Diagram
 ![UML Class Diagram](https://github.com/user-attachments/assets/c9871ddd-6cf3-49dc-8595-c0447d63d2cf)
 
 The diagram shows the relationships and flow:
@@ -151,13 +151,13 @@ The diagram shows the relationships and flow:
 - `OrderTest` composes the system by instantiating implementations and passing them to `OrderManager`.
 - Runtime flow: `OrderManager.processOrder(...)` calls `Order.calculateTotal(...)` and `Order.placeOrder(...)`, then `InvoiceGenerator.generateInvoice(...)`, and finally `EmailNotifier.sendEmailNotification(...)`.
 
-### 🔮 Future Enhancements
+## 🔮 Future Enhancements
 - Multiple notification channels (SMS, Slack, Push)
 - Additional invoice formats (PDF, HTML, CSV)
 - Persistence layer for orders and invoices
 - Comprehensive unit tests and CI setup
 
-### 🤝 Contributing
+## 🤝 Contributing
 Contributions are welcome!
 1. Fork this repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -166,6 +166,8 @@ Contributions are welcome!
 5. Open a Pull Request
 
 ### 📄 License
-This project is open source. Choose a license (e.g., MIT) and add a `LICENSE` file to the repository.
+This project is open source and available under the [MIT License](LICENSE).
+
+---
 
 **Note:** This implementation demonstrates clean code and SOLID principles. It uses Strategy-style interfaces (`Order`, `InvoiceGenerator`, `EmailNotifier`) and constructor-based dependency injection to keep components decoupled and easily swappable. This approach is ideal when you need interchangeable behaviors (e.g., different invoice formats or notification channels) without modifying the orchestration code (`OrderManager`).
