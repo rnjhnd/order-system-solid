@@ -142,7 +142,7 @@ OrderManager manager = new OrderManager(new OrderProcessor(), generator, new Ema
 - **Dependency Inversion Principle (DIP)**: `OrderManager` depends on abstractions and receives them via constructor injection
 
 ## 📊 UML Class Diagram
-![UML Class Diagram](https://github.com/user-attachments/assets/c9871ddd-6cf3-49dc-8595-c0447d63d2cf)
+<img width="1800" height="1240" alt="UML Class Diagram" src="https://github.com/user-attachments/assets/e2d22dfc-e584-43a8-822b-7b5291cc0ccd" />
 
 The diagram shows the relationships and flow:
 - `Order`, `InvoiceGenerator`, and `EmailNotifier` are interfaces that define contracts.
