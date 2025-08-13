@@ -62,15 +62,16 @@ This project implements an order processing flow that adheres to SOLID principle
 
 ```
 order-system-solid/
-  EmailNotifier.java       # Interface for notifications
-  EmailService.java        # EmailNotifier implementation
-  InvoiceGenerator.java    # Interface for invoices
-  InvoiceService.java      # InvoiceGenerator implementation
-  Order.java               # Interface for order operations
-  OrderProcessor.java      # Order implementation
-  OrderManager.java        # Orchestrates via dependency injection
-  OrderTest.java           # Demo application (main method)
-  README.md                # Project documentation
+├── src/
+│   ├── EmailNotifier.java       # Interface for notifications
+│   ├── EmailService.java        # EmailNotifier implementation
+│   ├── InvoiceGenerator.java    # Interface for invoices
+│   ├── InvoiceService.java      # InvoiceGenerator implementation
+│   ├── Order.java               # Interface for order operations
+│   ├── OrderProcessor.java      # Order implementation
+│   ├── OrderManager.java        # Orchestrates via dependency injection
+│   └── OrderTest.java           # Demo application (main method)
+└── README.md                    # Project documentation
 ```
 
 ## 🚀 Installation & Usage
